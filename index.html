@@ -1,0 +1,1879 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ITC World Cup 2026 — Predicții</title>
+<style>
+  :root {
+    --itc-navy: #1a3a2a;
+    --itc-blue: #1e7a45;
+    --itc-blue-light: #28a05c;
+    --itc-accent: #f0a500;
+    --itc-accent-dark: #c88800;
+    --gold: #f0a500;
+    --silver: #9ca3af;
+    --bronze: #cd7f32;
+    --bg: #f2f6f3;
+    --card: #ffffff;
+    --text: #1a3a2a;
+    --text-muted: #6b7280;
+    --border: #e5e7eb;
+    --success: #059669;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(26,58,42,0.10);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  header {
+    background: var(--itc-navy);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.25);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 24px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .brand-logo {
+    background: var(--itc-accent);
+    color: var(--itc-navy);
+    font-weight: 800;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+  }
+
+  .brand-name {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+
+  .brand-sub {
+    color: rgba(255,255,255,0.45);
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .header-title {
+    text-align: center;
+  }
+
+  .header-title h1 {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .header-title span {
+    color: var(--itc-accent);
+  }
+
+  .header-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .user-pill {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    cursor: pointer;
+    border: 1px solid rgba(255,255,255,0.15);
+    transition: background 0.2s;
+  }
+
+  .user-pill:hover { background: rgba(255,255,255,0.18); }
+
+  /* NAV */
+  nav {
+    display: flex;
+    gap: 0;
+    padding: 0 24px;
+    overflow-x: auto;
+  }
+
+  nav button {
+    background: none;
+    border: none;
+    color: rgba(255,255,255,0.55);
+    padding: 12px 18px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  nav button:hover { color: rgba(255,255,255,0.85); }
+  nav button.active { color: #fff; border-bottom-color: var(--itc-accent); }
+
+  /* PAGES */
+  .page { display: none; padding: 24px; max-width: 900px; margin: 0 auto; }
+  .page.active { display: block; }
+
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px 24px;
+    margin-bottom: 16px;
+  }
+
+  .card-title {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* LEADERBOARD */
+  .leaderboard-podium {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .podium-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 18px 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .podium-card.gold { border-top: 3px solid var(--gold); }
+  .podium-card.silver { border-top: 3px solid var(--silver); }
+  .podium-card.bronze { border-top: 3px solid var(--bronze); }
+
+  .podium-rank {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+
+  .podium-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .podium-pts {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--itc-blue);
+  }
+
+  .podium-pts span {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    margin-left: 2px;
+  }
+
+  .leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .leaderboard-table th {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .leaderboard-table td {
+    padding: 11px 12px;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .leaderboard-table tr:last-child td { border-bottom: none; }
+  .leaderboard-table tr:hover td { background: #f8f9fc; }
+
+  .rank-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .rank-1 { background: #fff7e0; color: #a07000; }
+  .rank-2 { background: #f0f0f0; color: #555; }
+  .rank-3 { background: #fdecd8; color: #8b4500; }
+  .rank-other { background: var(--bg); color: var(--text-muted); }
+
+  .pts-chip {
+    display: inline-block;
+    background: #eef4ff;
+    color: var(--itc-blue);
+    font-weight: 700;
+    font-size: 13px;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  .current-user td { background: #eef4ff !important; font-weight: 600; }
+
+  /* MATCH CARDS */
+  .match-group-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    padding: 16px 0 8px;
+  }
+
+  .match-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 16px 20px;
+    margin-bottom: 10px;
+    border-left: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .match-card.has-prediction { border-left-color: var(--itc-blue); }
+  .match-card.locked { border-left-color: var(--border); opacity: 0.7; }
+
+  .match-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .match-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.3px;
+  }
+
+  .match-status {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+  }
+
+  .status-open { background: #d1fae5; color: #065f46; }
+  .status-locked { background: #fee2e2; color: #991b1b; }
+  .status-done { background: #e0e7ff; color: #3730a3; }
+
+  .match-teams {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .team {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .team.right {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  .team-flag {
+    font-size: 32px;
+    line-height: 1;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.15));
+  }
+
+  .team-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .team-group {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+
+  .score-inputs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .score-input {
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    color: var(--itc-navy);
+    background: var(--bg);
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+
+  .score-input::-webkit-outer-spin-button,
+  .score-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+  .score-input:focus {
+    outline: none;
+    border-color: var(--itc-blue);
+    background: #fff;
+  }
+
+  .score-separator {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-muted);
+  }
+
+  .save-btn {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: var(--itc-blue);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .save-btn:hover { background: var(--itc-blue-light); }
+  .save-btn.saved { background: var(--success); }
+  .save-btn:disabled { background: var(--text-muted); cursor: not-allowed; }
+
+  .points-breakdown {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .pts-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+  }
+
+  .pts-4 { background: #d1fae5; color: #065f46; }
+  .pts-3 { background: #dbeafe; color: #1e40af; }
+  .pts-2 { background: #fef3c7; color: #92400e; }
+  .pts-0 { background: #fee2e2; color: #991b1b; }
+
+  /* RESULTS */
+  .result-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  .result-num {
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--itc-navy);
+  }
+
+  .result-dash {
+    font-size: 20px;
+    color: var(--text-muted);
+  }
+
+  /* MODAL / REGISTER */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10,20,40,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+  }
+
+  .modal {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 36px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  }
+
+  .modal-logo {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .modal-logo .itc-badge {
+    display: inline-block;
+    background: var(--itc-navy);
+    color: var(--itc-accent);
+    font-weight: 800;
+    font-size: 20px;
+    padding: 10px 18px;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .modal-logo .cup-emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .modal h2 {
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--itc-navy);
+    margin-bottom: 6px;
+  }
+
+  .modal p {
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+
+  .field-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+  }
+
+  .field-input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg);
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+
+  .field-input:focus {
+    outline: none;
+    border-color: var(--itc-blue);
+    background: #fff;
+  }
+
+  .field-select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg);
+    margin-bottom: 16px;
+    cursor: pointer;
+    font-family: inherit;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+  }
+
+  .field-select:focus { outline: none; border-color: var(--itc-blue); }
+
+  .primary-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--itc-navy);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.3px;
+    font-family: inherit;
+  }
+
+  .primary-btn:hover { background: var(--itc-blue); }
+
+  .login-link {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .login-link a {
+    color: var(--itc-blue);
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .login-link a:hover { text-decoration: underline; }
+
+  /* STATS */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .stat-box {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 16px;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .stat-num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--itc-blue);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  /* INFO PAGE */
+  .info-section { margin-bottom: 24px; }
+
+  .info-section h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--itc-navy);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rule-item:last-child { border-bottom: none; }
+
+  .rule-pts {
+    min-width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+
+  .rule-text { font-size: 14px; line-height: 1.5; }
+  .rule-text strong { color: var(--itc-navy); }
+
+  /* LOADING */
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  .spinner {
+    width: 32px; height: 32px;
+    border: 3px solid var(--border);
+    border-top-color: var(--itc-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin: 0 auto 12px;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--itc-navy);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    z-index: 2000;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s;
+  }
+
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { background: #065f46; }
+  .toast.error { background: #991b1b; }
+
+  /* FILTERS */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .filter-btn {
+    padding: 7px 14px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+
+  .filter-btn.active {
+    background: var(--itc-navy);
+    color: #fff;
+    border-color: var(--itc-navy);
+  }
+
+  @media (max-width: 600px) {
+    .leaderboard-podium { grid-template-columns: 1fr; }
+    .match-teams { grid-template-columns: 1fr auto 1fr; }
+    .team-name { font-size: 13px; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .page { padding: 16px; }
+    header .header-top { padding: 10px 16px; }
+    .brand-name { font-size: 13px; }
+    nav { padding: 0 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- MODAL REGISTER/LOGIN -->
+<div class="overlay" id="authOverlay">
+  <div class="modal">
+    <div class="modal-logo">
+      <span class="cup-emoji">🏆</span>
+      <div style="background:var(--itc-navy); display:inline-block; padding:8px 16px; border-radius:8px; margin-bottom:8px;">
+        <img src="data:image/png;base64,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" alt="ITC Logistic" style="height:32px; width:auto; object-fit:contain; display:block;">
+      </div>
+    </div>
+    <h2 id="authTitle">World Cup 2026</h2>
+    <p id="authSubtitle">Înregistrează-te pentru a participa la jocul de predicții al ITC Logistic.</p>
+
+    <div id="registerForm">
+      <div class="field-label">Nume complet</div>
+      <input type="text" class="field-input" id="regName" placeholder="ex: Ion Popescu" autocomplete="name">
+
+      <div class="field-label">Oraș</div>
+      <input type="text" class="field-input" id="regCity" placeholder="ex: Timișoara" autocomplete="address-level2">
+
+      <div class="field-label">Echipa favorită (opțional)</div>
+      <input type="text" class="field-input" id="regTeam" placeholder="ex: România 🇷🇴">
+
+      <div class="field-label">Parolă</div>
+      <input type="password" class="field-input" id="regPass" placeholder="Minim 4 caractere" autocomplete="new-password">
+
+      <button class="primary-btn" onclick="register()">Intră în joc 🚀</button>
+      <div class="login-link">Ai cont deja? <a onclick="showLogin()">Autentifică-te</a></div>
+    </div>
+
+    <div id="loginForm" style="display:none">
+      <div class="field-label">Numele tău</div>
+      <input type="text" class="field-input" id="loginName" placeholder="Introdu numele exact" autocomplete="name">
+      <div class="field-label">Parolă</div>
+      <input type="password" class="field-input" id="loginPass" placeholder="Parola ta" autocomplete="current-password">
+      <button class="primary-btn" onclick="login()">Continuă</button>
+      <div class="login-link">Cont nou? <a onclick="showRegister()">Înregistrează-te</a></div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div class="brand">
+      <img src="data:image/png;base64,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" alt="ITC Logistic" style="height:36px; width:auto; object-fit:contain;">
+      <div>
+        <div class="brand-name">Logistic România</div>
+        <div class="brand-sub">World Cup Predictor</div>
+      </div>
+    </div>
+    <div class="header-title">
+      <h1>🏆 <span>FIFA</span> World Cup 2026</h1>
+    </div>
+    <div class="header-user">
+      <div class="user-pill" id="userPill" onclick="logout()">—</div>
+    </div>
+  </div>
+  <nav>
+    <button class="active" onclick="showPage('leaderboard', this)">🏅 Clasament</button>
+    <button onclick="showPage('predictions', this)">⚽ Predicțiile mele</button>
+    <button onclick="showPage('results', this)">📊 Rezultate</button>
+    <button onclick="showPage('prizes', this)">🎁 Premii</button>
+    <button onclick="showPage('rules', this)">📋 Regulament</button>
+  </nav>
+</header>
+
+<!-- PAGE: LEADERBOARD -->
+<div class="page active" id="page-leaderboard">
+  <div class="filter-bar" style="margin-bottom:16px;">
+    <button class="filter-btn active" id="lb-btn-general" onclick="switchLeaderboard('general', this)">🌍 General</button>
+    <button class="filter-btn" id="lb-btn-city" onclick="switchLeaderboard('city', this)">🏙️ Pe orașe</button>
+  </div>
+  <div id="podiumSection">
+    <div class="loading"><div class="spinner"></div>Se încarcă clasamentul...</div>
+  </div>
+  <div class="card" id="fullTableSection" style="display:none">
+    <div class="card-title" id="fullTableTitle">📊 Clasament complet</div>
+    <table class="leaderboard-table" id="fullTable">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Participant</th>
+          <th id="th-city">Oraș</th>
+          <th>Predicții</th>
+          <th>Puncte</th>
+        </tr>
+      </thead>
+      <tbody id="fullTableBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE: PREDICTIONS -->
+<div class="page" id="page-predictions">
+  <div class="filter-bar" id="predFilterBar">
+    <button class="filter-btn active" onclick="filterPred('all', this)">Toate</button>
+    <button class="filter-btn" onclick="filterPred('open', this)">Deschise</button>
+    <button class="filter-btn" onclick="filterPred('done', this)">Completate</button>
+  </div>
+  <div id="predictionsContainer">
+    <div class="loading"><div class="spinner"></div>Se încarcă meciurile...</div>
+  </div>
+</div>
+
+<!-- PAGE: RESULTS -->
+<div class="page" id="page-results">
+  <div class="stats-grid" id="myStats">
+    <div class="stat-box"><div class="stat-num" id="statTotal">—</div><div class="stat-label">Puncte totale</div></div>
+    <div class="stat-box"><div class="stat-num" id="statExact">—</div><div class="stat-label">Rezultat exact</div></div>
+    <div class="stat-box"><div class="stat-num" id="statTend">—</div><div class="stat-label">Tendință corectă</div></div>
+    <div class="stat-box"><div class="stat-num" id="statPos">—</div><div class="stat-label">Poziție clasament</div></div>
+  </div>
+  <div id="resultsContainer">
+    <div class="loading"><div class="spinner"></div>Se încarcă rezultatele...</div>
+  </div>
+</div>
+
+<!-- PAGE: PRIZES -->
+<div class="page" id="page-prizes">
+  <div class="card">
+    <div class="card-title">🏆 Premii</div>
+    <div id="prizesContainer" style="display:flex; flex-direction:column; gap:12px; margin-bottom:8px;">
+      <div class="loading"><div class="spinner"></div>Se încarcă premiile...</div>
+    </div>
+    <p style="font-size:11px; color:var(--text-muted); margin-top:12px; line-height:1.6;">* Premiile sunt oferite de organizator. Câștigătorii vor fi anunțați după finala din 19 iulie 2026.</p>
+  </div>
+
+  <div class="card" style="background:var(--itc-navy); color:#fff;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="data:image/png;base64,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" alt="ITC" style="height:32px; opacity:0.9;">
+      <div>
+        <div style="font-weight:700; font-size:15px; margin-bottom:3px;">ITC Logistic România</div>
+        <div style="font-size:12px; opacity:0.6;">Timișoara · Brașov · București · Cluj-Napoca</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAGE: RULES -->
+<div class="page" id="page-rules">
+  <div class="card">
+    <div class="card-title">🏆 Despre joc</div>
+    <p style="font-size:14px; color:var(--text-muted); line-height:1.7; margin-bottom:16px;">
+      Introdu predicțiile tale înainte de startul fiecărui meci. Cu cât ești mai precis, cu atât câștigi mai multe puncte. Urmărește clasamentul live și luptă pentru primul loc!
+    </p>
+    <p style="font-size:12px; color:var(--text-muted);">Turneul: 11 iunie – 19 iulie 2026 · 104 meciuri · 48 de echipe</p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚡ Sistem de punctaj</div>
+    <div class="info-section">
+      <div class="rule-item">
+        <div class="rule-pts pts-4" style="background:#d1fae5; color:#065f46;">4</div>
+        <div class="rule-text"><strong>Rezultat exact</strong> — ai ghicit scorul corect al meciului (ex: 2-1 vs 2-1)</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-pts" style="background:#dbeafe; color:#1e40af;">3</div>
+        <div class="rule-text"><strong>Diferență de goluri corectă</strong> — diferența de goluri e corectă, dar nu și scorul exact (ex: 3-1 vs 2-0)</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-pts" style="background:#fef3c7; color:#92400e;">2</div>
+        <div class="rule-text"><strong>Tendință corectă</strong> — ai ghicit câștigătorul sau egalul, dar nu diferența de goluri</div>
+      </div>
+      <div class="rule-item">
+        <div class="rule-pts" style="background:#fee2e2; color:#991b1b;">0</div>
+        <div class="rule-text"><strong>Predicție greșită</strong> — tendința diferă de rezultatul real</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚠️ Faza eliminatorie</div>
+    <p style="font-size:14px; color:var(--text-muted); line-height:1.7;">
+      Din runda de 32 până la finală, golurile marcate în prelungiri sau la loviturile de departajare <strong>nu sunt luate în calcul</strong>. Se consideră doar scorul din timpul regulamentar (90 de minute).
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="card-title">🏅 Câștigătorul</div>
+    <p style="font-size:14px; color:var(--text-muted); line-height:1.7;">
+      Câștigă participantul cu cele mai multe puncte la finalul turneului. La egalitate, departajarea se face prin tragere la sorți. Predicțiile trebuie introduse <strong>înainte de startul meciului</strong> — după aceea nu mai pot fi modificate.
+    </p>
+  </div>
+
+  <div class="card" style="background: var(--itc-navy); color: #fff;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="data:image/png;base64,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" alt="ITC" style="height:32px; opacity:0.9;">
+      <div>
+        <div style="font-weight:700; font-size:15px; margin-bottom:3px;">ITC Logistic România</div>
+        <div style="font-size:12px; opacity:0.6;">Timișoara · Brașov · București · Cluj-Napoca</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// CONFIG — înlocuiește cu URL-ul Apps Script după deploy
+// ============================================================
+const GS_URL = 'https://script.google.com/macros/s/AKfycbxBlt-H6OKUWSUJhYqnxYN_L04octmvSLxc4kZL9ba2q3tkvOV44gW0RlRsAErbZ277Hw/exec';
+
+// ============================================================
+// FLAGS MAP
+// ============================================================
+// ============================================================
+// FLAGS — imagini reale, nu emoji (compatibile pe toate browserele)
+// ============================================================
+const FLAG_CODES = {
+  'Mexico': 'mx', 'South Africa': 'za', 'South Korea': 'kr', 'Czech Republic': 'cz', 'Czechia': 'cz',
+  'Canada': 'ca', 'Bosnia & Herzegovina': 'ba', 'Portugal': 'pt', 'Argentina': 'ar',
+  'USA': 'us', 'United States': 'us', 'Uruguay': 'uy', 'Panama': 'pa', 'Ghana': 'gh',
+  'France': 'fr', 'Morocco': 'ma', 'Colombia': 'co', 'Japan': 'jp', 'Haiti': 'ht', 'Scotland': 'gb-sct',
+  'Brazil': 'br', 'Germany': 'de', 'Egypt': 'eg', 'Paraguay': 'py',
+  'Spain': 'es', 'Australia': 'au', 'Senegal': 'sn', 'Ecuador': 'ec',
+  'England': 'gb-eng', 'Netherlands': 'nl', 'Saudi Arabia': 'sa', 'Venezuela': 've',
+  'Switzerland': 'ch', 'Croatia': 'hr', 'Nigeria': 'ng', 'Chile': 'cl',
+  'Belgium': 'be', 'Serbia': 'rs', 'New Zealand': 'nz', 'Costa Rica': 'cr',
+  'Iran': 'ir', 'Qatar': 'qa', 'Ivory Coast': 'ci', 'Peru': 'pe',
+  'Poland': 'pl', 'Austria': 'at', 'Algeria': 'dz', 'Cuba': 'cu',
+  'Denmark': 'dk', 'Ukraine': 'ua', 'Cameroon': 'cm', 'Indonesia': 'id',
+  'Italy': 'it', 'Turkey': 'tr', 'Norway': 'no', 'Sweden': 'se',
+  'Hungary': 'hu', 'Romania': 'ro', 'Greece': 'gr', 'Slovakia': 'sk',
+  'Jordan': 'jo', 'Iraq': 'iq', 'Uzbekistan': 'uz', 'Bolivia': 'bo',
+  'Honduras': 'hn', 'Jamaica': 'jm', 'El Salvador': 'sv', 'Guatemala': 'gt',
+  'DR Congo': 'cd', 'Mali': 'ml', 'Uganda': 'ug', 'Zambia': 'zm',
+  'Tunisia': 'tn', 'Thailand': 'th', 'Wales': 'gb-wls', 'Cape Verde': 'cv',
+  'Curaçao': 'cw', 'Sweden': 'se', 'DR Congo': 'cd',
+};
+
+function getFlag(name) {
+  const code = FLAG_CODES[name];
+  if (code) {
+    return `<img src="https://flagcdn.com/w40/${code}.png" alt="${name}" style="width:36px;height:auto;border-radius:3px;box-shadow:0 1px 3px rgba(0,0,0,0.2);" onerror="this.outerHTML='🏳️'">`;
+  }
+  return '🏳️';
+}
+
+// ============================================================
+// STATE
+// ============================================================
+let currentUser = null;
+let allMatches = [];
+let myPredictions = {};
+let leaderboardData = [];
+let predFilter = 'all';
+
+// ============================================================
+// PASSWORD HASHING (SHA-256 via Web Crypto)
+// ============================================================
+async function hashPassword(pass) {
+  const buf = new TextEncoder().encode(pass);
+  const hash = await crypto.subtle.digest('SHA-256', buf);
+  return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+// ============================================================
+// AUTH
+// ============================================================
+function showLogin() {
+  document.getElementById('registerForm').style.display = 'none';
+  document.getElementById('loginForm').style.display = 'block';
+  document.getElementById('authTitle').textContent = 'Bine ai revenit!';
+  document.getElementById('authSubtitle').textContent = 'Introdu numele și parola pentru a continua.';
+}
+
+function showRegister() {
+  document.getElementById('loginForm').style.display = 'none';
+  document.getElementById('registerForm').style.display = 'block';
+  document.getElementById('authTitle').textContent = 'World Cup 2026';
+  document.getElementById('authSubtitle').textContent = 'Înregistrează-te pentru a participa la jocul de predicții al ITC Logistic.';
+}
+
+async function register() {
+  const name = document.getElementById('regName').value.trim();
+  const city = document.getElementById('regCity').value.trim();
+  const favTeam = document.getElementById('regTeam').value.trim();
+  const pass = document.getElementById('regPass').value;
+  if (!name) { showToast('Introdu numele tău!', 'error'); return; }
+  if (!city) { showToast('Introdu orașul tău!', 'error'); return; }
+  if (!pass || pass.length < 4) { showToast('Parola trebuie să aibă minim 4 caractere!', 'error'); return; }
+  const passHash = await hashPassword(pass);
+  try {
+    const res = await gsCall('register', { name, city, favTeam, passHash });
+    if (res.success) {
+      setUser({ name, city, favTeam });
+      document.getElementById('authOverlay').style.display = 'none';
+      showToast('Bine ai venit, ' + name + '! 🎉', 'success');
+      loadAll();
+    } else {
+      showToast(res.message || 'Eroare la înregistrare', 'error');
+    }
+  } catch(e) {
+    setUser({ name, city, favTeam });
+    document.getElementById('authOverlay').style.display = 'none';
+    showToast('Bine ai venit, ' + name + '! 🎉 (mod demo)', 'success');
+    loadAll();
+  }
+}
+
+async function login() {
+  const name = document.getElementById('loginName').value.trim();
+  const pass = document.getElementById('loginPass').value;
+  if (!name) { showToast('Introdu numele!', 'error'); return; }
+  if (!pass) { showToast('Introdu parola!', 'error'); return; }
+  const passHash = await hashPassword(pass);
+  try {
+    const res = await gsCall('login', { name, passHash });
+    if (res.success) {
+      setUser(res.user);
+      document.getElementById('authOverlay').style.display = 'none';
+      showToast('Bine ai revenit, ' + name + '! 👋');
+      loadAll();
+    } else {
+      showToast(res.message || 'Nume sau parolă incorectă!', 'error');
+    }
+  } catch(e) {
+    setUser({ name, city: '', favTeam: '' });
+    document.getElementById('authOverlay').style.display = 'none';
+    showToast('Bine ai revenit! (mod demo)');
+    loadAll();
+  }
+}
+
+// ============================================================
+// ADMIN — accesat la ?admin=itclogistic2026
+// ============================================================
+function checkAdminAccess() {
+  if (new URLSearchParams(window.location.search).get('admin') === 'itclogistic2026') {
+    document.getElementById('adminPanel').style.display = 'flex';
+    loadAdminUsers();
+    renderAdminPrizes();
+  }
+}
+
+function hideAdminPanel() {
+  document.getElementById('adminPanel').style.display = 'none';
+}
+
+async function adminResetPassword() {
+  const targetName = document.getElementById('adminTargetName').value.trim();
+  const newPass = document.getElementById('adminNewPass').value.trim();
+  if (!targetName || !newPass) { showToast('Completează toate câmpurile!', 'error'); return; }
+  if (newPass.length < 4) { showToast('Parola nouă trebuie să aibă minim 4 caractere!', 'error'); return; }
+  const passHash = await hashPassword(newPass);
+  try {
+    const res = await gsCall('resetPassword', { name: targetName, passHash });
+    if (res.success) {
+      showToast('Parola resetată pentru ' + targetName + '! ✅', 'success');
+      document.getElementById('adminTargetName').value = '';
+      document.getElementById('adminNewPass').value = '';
+    } else {
+      showToast(res.message || 'Utilizatorul nu există!', 'error');
+    }
+  } catch(e) { showToast('Eroare conexiune', 'error'); }
+}
+
+async function loadAdminUsers() {
+  try {
+    const res = await gsCall('getLeaderboard');
+    const users = res.data || [];
+    document.getElementById('adminUserList').innerHTML = users.length
+      ? users.map(u => `<div style="padding:8px 0;border-bottom:1px solid #eee;font-size:13px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+            <strong>${u.name}</strong> · ${u.totalPoints} pts
+            <div style="display:flex;gap:6px;">
+              <button onclick="document.getElementById('adminTargetName').value='${u.name.replace(/'/g,"\\'")}'"
+                style="background:var(--itc-blue);color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:11px;">🔑</button>
+              <button onclick="adminDeleteUser('${u.name.replace(/'/g,"\\'")}')"
+                style="background:#dc2626;color:#fff;border:none;padding:4px 8px;border-radius:6px;cursor:pointer;font-size:13px;font-weight:700;">✕</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;">
+            <input value="${u.city||u.location||''}" id="city_${u.name.replace(/[^a-zA-Z0-9]/g,'_')}"
+              style="flex:1;border:1.5px solid #ddd;border-radius:6px;padding:4px 8px;font-size:12px;font-family:inherit;">
+            <button onclick="adminUpdateCity('${u.name.replace(/'/g,"\\'")}', document.getElementById('city_${u.name.replace(/[^a-zA-Z0-9]/g,'_')}').value)"
+              style="background:#059669;color:#fff;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:11px;">💾</button>
+          </div>
+        </div>`).join('')
+      : '<div style="color:#999;font-size:13px;">Niciun utilizator.</div>';
+  } catch(e) { document.getElementById('adminUserList').innerHTML = '<div style="color:#999;">Eroare.</div>'; }
+}
+
+async function adminUpdateCity(name, newCity) {
+  if (!newCity.trim()) { showToast('Orașul nu poate fi gol!', 'error'); return; }
+  try {
+    const res = await gsCall('updateCity', { name, city: newCity.trim() });
+    if (res.success) {
+      showToast(`Oraș actualizat pentru ${name}! ✅`, 'success');
+      loadAdminUsers();
+    } else {
+      showToast(res.message || 'Eroare', 'error');
+    }
+  } catch(e) { showToast('Eroare conexiune', 'error'); }
+}
+
+async function adminDeleteUser(name) {
+  if (!confirm(`Ștergi utilizatorul "${name}"? Această acțiune e ireversibilă!`)) return;
+  try {
+    const res = await gsCall('deleteUser', { name });
+    if (res.success) {
+      showToast(`"${name}" șters! ✅`, 'success');
+      loadAdminUsers();
+    } else {
+      showToast(res.message || 'Eroare la ștergere', 'error');
+    }
+  } catch(e) { showToast('Eroare conexiune', 'error'); }
+}
+
+function setUser(u) {
+  currentUser = u;
+  localStorage.setItem('itcWC26_user', JSON.stringify(u));
+  document.getElementById('userPill').textContent = '👤 ' + u.name.split(' ')[0];
+}
+
+function logout() {
+  if (!confirm('Ești sigur că vrei să ieși?')) return;
+  localStorage.removeItem('itcWC26_user');
+  currentUser = null;
+  document.getElementById('authOverlay').style.display = 'flex';
+  document.getElementById('userPill').textContent = '—';
+}
+
+// ============================================================
+// GOOGLE SHEETS CALL
+// ============================================================
+async function gsCall(action, data = {}) {
+  const url = GS_URL + '?action=' + action + '&data=' + encodeURIComponent(JSON.stringify(data));
+  const res = await fetch(url);
+  return res.json();
+}
+
+// ============================================================
+// FETCH MATCHES from openfootball (via jsDelivr CDN)
+// ============================================================
+async function fetchMatches() {
+  try {
+    const res = await fetch('https://cdn.jsdelivr.net/gh/openfootball/worldcup.json@master/2026/worldcup.json');
+    const json = await res.json();
+    return json.matches || [];
+  } catch(e) {
+    return getDemoMatches();
+  }
+}
+
+function getDemoMatches() {
+  const teams = [
+    ['Mexico','South Africa','Group A'], ['South Korea','Czechia','Group A'],
+    ['USA','Uruguay','Group B'], ['Panama','Ghana','Group B'],
+    ['Argentina','Nigeria','Group C'], ['Chile','Ecuador','Group C'],
+    ['France','Belgium','Group D'], ['Morocco','Croatia','Group D'],
+    ['Brazil','Colombia','Group E'], ['Venezuela','Paraguay','Group E'],
+    ['Germany','Spain','Group F'], ['Portugal','Turkey','Group F'],
+    ['England','Netherlands','Group G'], ['Egypt','New Zealand','Group G'],
+    ['Italy','Austria','Group H'], ['Denmark','Serbia','Group H'],
+  ];
+  const base = new Date('2026-06-11');
+  return teams.map(([t1, t2, g], i) => ({
+    round: 'Matchday ' + (Math.floor(i/4)+1),
+    date: new Date(base.getTime() + i*12*3600000).toISOString().slice(0,10),
+    time: '19:00',
+    team1: t1, team2: t2, group: g,
+    score1: null, score2: null
+  }));
+}
+
+// ============================================================
+// LOAD ALL DATA
+// ============================================================
+async function loadAll() {
+  allMatches = await fetchMatches();
+
+  try {
+    const res = await gsCall('getLeaderboard');
+    leaderboardData = res.data || [];
+    const predRes = await gsCall('getPredictions', { name: currentUser.name });
+    myPredictions = predRes.predictions || {};
+  } catch(e) {
+    leaderboardData = getDemoLeaderboard();
+    myPredictions = {};
+  }
+
+  renderLeaderboard();
+  renderPredictions();
+  renderResults();
+  loadPrizes();
+}
+
+function getDemoLeaderboard() {
+  const names = ['Alex Radan','Mihai Aiftincai','Andreas Palasanu','Nicolae Petcu','Alexandru Costin','Ioan Tat','Ion Ionescu','Maria Popescu'];
+  return names.map((n,i) => ({
+    name: n, city: 'Timișoara',
+    totalPoints: Math.max(0, 45 - i*6 + Math.floor(Math.random()*4)),
+    predictions: 12 - i,
+    exact: Math.max(0, 4-i), tend: Math.max(0, 8-i)
+  })).sort((a,b) => b.totalPoints - a.totalPoints);
+}
+
+let leaderboardMode = 'general'; // 'general' | 'city'
+
+function switchLeaderboard(mode, btn) {
+  leaderboardMode = mode;
+  document.querySelectorAll('#page-leaderboard .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderLeaderboard();
+}
+
+// ============================================================
+// RENDER LEADERBOARD
+// ============================================================
+function renderLeaderboard() {
+  if (leaderboardMode === 'city') {
+    renderCityLeaderboard();
+    return;
+  }
+
+  const top3 = leaderboardData.slice(0,3);
+  const medals = ['gold','silver','bronze'];
+  const trophies = ['🥇','🥈','🥉'];
+
+  let podiumHTML = '<div class="leaderboard-podium">';
+  top3.forEach((u, i) => {
+    const isMe = currentUser && u.name === currentUser.name;
+    podiumHTML += `
+      <div class="podium-card ${medals[i]}" ${isMe ? 'style="box-shadow:0 0 0 2px var(--itc-blue);"' : ''}>
+        <div class="podium-rank">${trophies[i]}</div>
+        <div class="podium-name">${u.name}${isMe ? ' 👈' : ''}</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">${u.city || u.location || ''}</div>
+        <div class="podium-pts">${u.totalPoints}<span>pts</span></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">${u.predictions || 0} predicții</div>
+      </div>`;
+  });
+  podiumHTML += '</div>';
+
+  document.getElementById('podiumSection').innerHTML = leaderboardData.length === 0
+    ? '<div class="card" style="text-align:center; padding:40px; color:var(--text-muted)">Fii primul care se înregistrează! 🚀</div>'
+    : podiumHTML;
+
+  document.getElementById('fullTableTitle') && (document.getElementById('fullTableTitle').textContent = '📊 Clasament general');
+  document.getElementById('th-city') && (document.getElementById('th-city').textContent = 'Oraș');
+
+  if (leaderboardData.length > 3) {
+    document.getElementById('fullTableSection').style.display = 'block';
+    const tbody = document.getElementById('fullTableBody');
+    tbody.innerHTML = leaderboardData.map((u, i) => {
+      const isMe = currentUser && u.name === currentUser.name;
+      const rankClass = i < 3 ? `rank-${i+1}` : 'rank-other';
+      return `<tr class="${isMe ? 'current-user' : ''}">
+        <td><span class="rank-badge ${rankClass}">${i+1}</span></td>
+        <td>${u.name}${isMe ? ' <span style="color:var(--itc-blue);font-size:11px;">tu</span>' : ''}</td>
+        <td style="color:var(--text-muted); font-size:13px;">${u.city || u.location || '—'}</td>
+        <td style="color:var(--text-muted); font-size:13px;">${u.predictions || 0}</td>
+        <td><span class="pts-chip">${u.totalPoints}</span></td>
+      </tr>`;
+    }).join('');
+  }
+}
+
+function renderCityLeaderboard() {
+  // Grupează userii pe orașe
+  const cities = {};
+  leaderboardData.forEach(u => {
+    const city = u.city || u.location || 'Altă locație';
+    if (!cities[city]) cities[city] = [];
+    cities[city].push(u);
+  });
+
+  // Sortează orașele după totalul de puncte
+  const sortedCities = Object.entries(cities).sort((a, b) => {
+    const sumA = a[1].reduce((s, u) => s + (u.totalPoints || 0), 0);
+    const sumB = b[1].reduce((s, u) => s + (u.totalPoints || 0), 0);
+    return sumB - sumA;
+  });
+
+  if (!sortedCities.length) {
+    document.getElementById('podiumSection').innerHTML = '<div class="card" style="text-align:center; padding:40px; color:var(--text-muted)">Fii primul care se înregistrează! 🚀</div>';
+    document.getElementById('fullTableSection').style.display = 'none';
+    return;
+  }
+
+  // Podium pe orașe
+  const cityMedals = ['gold','silver','bronze'];
+  const trophies = ['🥇','🥈','🥉'];
+  let podiumHTML = '<div class="leaderboard-podium">';
+  sortedCities.slice(0,3).forEach(([city, users], i) => {
+    const total = users.reduce((s, u) => s + (u.totalPoints || 0), 0);
+    const best = users[0];
+    podiumHTML += `
+      <div class="podium-card ${cityMedals[i]}">
+        <div class="podium-rank">${trophies[i]}</div>
+        <div class="podium-name">${city}</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:8px;">${users.length} participant${users.length !== 1 ? 'ți' : ''}</div>
+        <div class="podium-pts">${total}<span>pts</span></div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Best: ${best.name}</div>
+      </div>`;
+  });
+  podiumHTML += '</div>';
+  document.getElementById('podiumSection').innerHTML = podiumHTML;
+
+  // Tabel detaliat pe orașe
+  document.getElementById('fullTableSection').style.display = 'block';
+  document.getElementById('fullTableTitle') && (document.getElementById('fullTableTitle').textContent = '🏙️ Clasament pe orașe');
+  document.getElementById('th-city') && (document.getElementById('th-city').textContent = 'Participanți');
+
+  const tbody = document.getElementById('fullTableBody');
+  let rows = '';
+  sortedCities.forEach(([city, users], cityIdx) => {
+    const total = users.reduce((s, u) => s + (u.totalPoints || 0), 0);
+    const rankClass = cityIdx < 3 ? `rank-${cityIdx+1}` : 'rank-other';
+    // Header oraș
+    rows += `<tr style="background:#f8faf8;">
+      <td><span class="rank-badge ${rankClass}">${cityIdx+1}</span></td>
+      <td colspan="3" style="font-weight:700; color:var(--itc-navy);">🏙️ ${city}</td>
+      <td><span class="pts-chip">${total}</span></td>
+    </tr>`;
+    // Useri din oraș
+    users.forEach((u, ui) => {
+      const isMe = currentUser && u.name === currentUser.name;
+      rows += `<tr class="${isMe ? 'current-user' : ''}" style="font-size:13px;">
+        <td style="color:var(--text-muted); padding-left:24px;">${ui+1}.</td>
+        <td style="padding-left:24px;">${u.name}${isMe ? ' <span style="color:var(--itc-blue);font-size:11px;">tu</span>' : ''}</td>
+        <td style="color:var(--text-muted);">${u.predictions || 0} pred.</td>
+        <td></td>
+        <td><span class="pts-chip">${u.totalPoints}</span></td>
+      </tr>`;
+    });
+  });
+  tbody.innerHTML = rows;
+}
+
+// ============================================================
+// HELPER — data unui meci în ora României
+// ============================================================
+function getRomaniaDateStr(m) {
+  const roTime = toRomaniaTime(m.date, m.time);
+  if (!roTime) return m.date;
+  const roDate = new Date(roTime.getTime() + 3 * 3600000);
+  return roDate.toISOString().slice(0,10);
+}
+
+// ============================================================
+// RENDER PREDICTIONS — pe zile, progresiv câte 2 zile
+// ============================================================
+
+// Conversie ora UTC la ora României (UTC+3 vara)
+function toRomaniaTime(dateStr, timeStr) {
+  if (!timeStr) return null;
+  const clean = timeStr.replace(/UTC[+-]\d+/,'').trim();
+  const [hStr, mStr] = clean.split(':');
+  const h = parseInt(hStr), m = parseInt(mStr || '0');
+  if (isNaN(h)) return null;
+
+  // Offset din timeStr (ex: "13:00 UTC-6" → -6)
+  const offsetMatch = timeStr.match(/UTC([+-]\d+)/);
+  const utcOffset = offsetMatch ? parseInt(offsetMatch[1]) : 0;
+
+  // Ora UTC: 13 - (-6) = 19
+  const utcH = h - utcOffset;
+
+  // Construim data în UTC
+  const d = new Date(dateStr + 'T00:00:00Z');
+  d.setUTCHours(utcH, m, 0, 0);
+
+  // Returnăm direct obiectul Date UTC — comparăm cu new Date() care e tot UTC intern
+  return d;
+}
+
+function renderPredictions() {
+  const now = new Date();
+  const container = document.getElementById('predictionsContainer');
+
+  // Colectează toate zilele disponibile (după ora RO)
+  const dateSet = new Set();
+  allMatches.forEach(m => dateSet.add(getRomaniaDateStr(m)));
+  const allDates = Array.from(dateSet).sort();
+
+  if (!allDates.length) {
+    container.innerHTML = '<div class="card" style="text-align:center; padding:30px; color:var(--text-muted)">Nu există meciuri disponibile.</div>';
+    return;
+  }
+
+  // Prima zi cu meciuri (11 iun)
+  const firstDate = allDates[0];
+
+  // Determină "fereastra vizibilă": toate zilele până la azi+1
+  // Logica: se văd zilele de la prima zi până la (ziua curentă + 1)
+  // Adică azi și mâine sunt mereu vizibile; ce e trecut e trecut
+  const todayStr = now.toISOString().slice(0,10);
+  // Vizibile = primele 2 zile de meciuri + toate zilele trecute
+  // Astfel cei care s-au înregistrat azi pot vedea și pune predicții pe 11 și 12 iunie
+  const visibleDates = new Set(allDates.filter((d, idx) => {
+    // Toate zilele trecute sau de azi sunt vizibile
+    if (d <= todayStr) return true;
+    // Zilele viitoare: vizibile dacă sunt în primele 2 zile din allDates
+    // sau dacă sunt în primele 2 zile DUPĂ ultima zi vizibilă
+    const lastVisibleIdx = allDates.filter(x => x <= todayStr).length - 1;
+    const effectiveIdx = Math.max(lastVisibleIdx, 0);
+    return idx <= effectiveIdx + 1;
+  }));
+
+  // Filtre actuale
+  let html = '';
+
+  allDates.forEach(dateStr => {
+    const matchesOfDay = allMatches.filter(m => getRomaniaDateStr(m) === dateStr);
+    const isVisible = visibleDates.has(dateStr);
+
+    // Aplică filtrul activ
+    const filtered = matchesOfDay.filter(m => {
+      const pred = myPredictions[matchKey(m)];
+      const roTime = toRomaniaTime(m.date, m.time);
+      const started = roTime ? roTime <= now : false;
+      if (predFilter === 'open') return !started && !pred;
+      if (predFilter === 'done') return !!pred;
+      return true;
+    });
+
+    if (!filtered.length && predFilter !== 'all') return;
+    if (predFilter === 'all' && !matchesOfDay.length) return;
+
+    const displayMatches = predFilter === 'all' ? matchesOfDay : filtered;
+    if (!displayMatches.length) return;
+
+    // Header zi
+    const dayLabel = new Date(dateStr + 'T12:00:00').toLocaleDateString('ro-RO', {
+      weekday: 'long', day: 'numeric', month: 'long'
+    });
+    const capitalDay = dayLabel.charAt(0).toUpperCase() + dayLabel.slice(1);
+
+    if (!isVisible && predFilter !== 'done') {
+      // Zi viitoare — afișează card locked cu countdown
+      const daysUntil = Math.ceil((new Date(dateStr + 'T00:00:00') - now) / 86400000);
+      html += `<div class="match-group-title">📅 ${capitalDay}</div>
+      <div class="card" style="text-align:center; padding:20px; color:var(--text-muted); border-left:3px solid var(--border); margin-bottom:10px;">
+        <div style="font-size:22px; margin-bottom:6px;">🔒</div>
+        <div style="font-size:13px; font-weight:600;">${displayMatches.length} meciuri — se deschid în ${daysUntil} ${daysUntil === 1 ? 'zi' : 'zile'}</div>
+        <div style="font-size:11px; margin-top:4px;">Predicțiile pentru această zi nu sunt disponibile încă</div>
+      </div>`;
+      return;
+    }
+
+    html += `<div class="match-group-title">📅 ${capitalDay}</div>`;
+    displayMatches.forEach(m => {
+      html += renderMatchCard(m, now);
+    });
+  });
+
+  container.innerHTML = html || '<div class="card" style="text-align:center; padding:30px; color:var(--text-muted)">Niciun meci corespunzător filtrului selectat.</div>';
+}
+
+function matchKey(m) {
+  return m.date + '_' + m.team1 + '_' + m.team2;
+}
+
+function renderMatchCard(m, now) {
+  const key = matchKey(m);
+  const pred = myPredictions[key];
+
+  // Calculează ora României și blochează la ora exactă
+  const roTime = toRomaniaTime(m.date, m.time);
+  const isLocked = roTime ? roTime <= now : new Date(m.date + 'T20:00:00Z') <= now;
+  const f1 = getFlag(m.team1), f2 = getFlag(m.team2);
+
+  // Afișează ora României
+  let timeDisplay = '';
+  if (roTime) {
+    const roH = (roTime.getUTCHours() + 3) % 24;
+    const roM = roTime.getUTCMinutes();
+    const hh = String(roH).padStart(2,'0');
+    const mm = String(roM).padStart(2,'0');
+    // Dacă ora RO depășește miezul nopții, data e de fapt ziua următoare
+    const utcH = roTime.getUTCHours();
+    const crossesMidnight = (utcH + 3) >= 24;
+    const displayDate = crossesMidnight
+      ? new Date(roTime.getTime() + 86400000)
+      : roTime;
+    const dateLabel = displayDate.toLocaleDateString('ro-RO', { day:'numeric', month:'short', timeZone:'UTC' });
+    timeDisplay = ` · ⏰ ${hh}:${mm} (ora RO)`;
+  }
+
+  const roDateStr = getRomaniaDateStr(m);
+  const dateStr = new Date(roDateStr + 'T12:00:00Z').toLocaleDateString('ro-RO', { day:'numeric', month:'short' });
+  const groupLabel = m.group ? ` · ${m.group}` : (m.round ? ` · ${m.round}` : '');
+
+  let statusHTML = '';
+  if (isLocked && m.score1 !== null && m.score2 !== null) {
+    statusHTML = `<span class="match-status status-done">Finalizat</span>`;
+  } else if (isLocked) {
+    statusHTML = `<span class="match-status status-locked">Blocat</span>`;
+  } else {
+    statusHTML = `<span class="match-status status-open">Deschis</span>`;
+  }
+
+  const v1 = pred ? pred.score1 : '';
+  const v2 = pred ? pred.score2 : '';
+
+  const scoreArea = isLocked
+    ? (m.score1 !== null
+        ? `<div class="result-score"><span class="result-num">${m.score1}</span><span class="result-dash">—</span><span class="result-num">${m.score2}</span></div>`
+        : `<div style="font-size:12px; color:var(--text-muted); text-align:center;">Așteptăm<br>rezultatul</div>`)
+    : `<div class="score-inputs">
+        <input type="number" class="score-input" min="0" max="20" value="${v1}" placeholder="?" id="s1_${key}" oninput="onPredInput('${key}')">
+        <span class="score-separator">—</span>
+        <input type="number" class="score-input" min="0" max="20" value="${v2}" placeholder="?" id="s2_${key}" oninput="onPredInput('${key}')">
+      </div>`;
+
+  const btnId = 'btn_' + key.replace(/[^a-zA-Z0-9]/g,'_');
+  const saveBtn = isLocked ? '' : `<button class="save-btn ${pred ? 'saved' : ''}" id="${btnId}" onclick="savePred('${key}')">
+    ${pred ? '✓ Salvat' : '💾 Salvează predicția'}
+  </button>`;
+
+  let ptsBreakdown = '';
+  if (pred && m.score1 !== null) {
+    const pts = calcPoints(pred.score1, pred.score2, m.score1, m.score2);
+    ptsBreakdown = `<div class="points-breakdown">
+      <span class="pts-tag pts-${pts}">${pts} puncte</span>
+      <span style="font-size:11px; color:var(--text-muted)">Predicție: ${pred.score1}–${pred.score2}</span>
+    </div>`;
+  } else if (pred) {
+    ptsBreakdown = `<div style="margin-top:8px; font-size:11px; color:var(--success);">✓ Predicție înregistrată: ${pred.score1}–${pred.score2}</div>`;
+  }
+
+  return `<div class="match-card ${pred ? 'has-prediction' : ''} ${isLocked ? 'locked' : ''}" data-key="${key}">
+    <div class="match-header">
+      <span class="match-meta">${dateStr}${groupLabel}${timeDisplay}</span>
+      ${statusHTML}
+    </div>
+    <div class="match-teams">
+      <div class="team">
+        <div class="team-flag">${f1}</div>
+        <div><div class="team-name">${m.team1}</div></div>
+      </div>
+      ${scoreArea}
+      <div class="team right">
+        <div class="team-flag">${f2}</div>
+        <div><div class="team-name">${m.team2}</div></div>
+      </div>
+    </div>
+    ${saveBtn}
+    ${ptsBreakdown}
+  </div>`;
+}
+
+function onPredInput(key) {
+  const btnId = 'btn_' + key.replace(/[^a-zA-Z0-9]/g,'_');
+  const btn = document.getElementById(btnId);
+  if (btn) {
+    btn.classList.remove('saved');
+    btn.textContent = '💾 Salvează predicția';
+  }
+}
+
+async function savePred(key) {
+  const s1Input = document.getElementById('s1_' + key);
+  const s2Input = document.getElementById('s2_' + key);
+  const btnId = 'btn_' + key.replace(/[^a-zA-Z0-9]/g,'_');
+  const btn = document.getElementById(btnId);
+
+  if (!s1Input || s1Input.value === '' || s2Input.value === '') {
+    showToast('Introdu ambele scoruri!', 'error'); return;
+  }
+
+  const score1 = parseInt(s1Input.value);
+  const score2 = parseInt(s2Input.value);
+
+  if (isNaN(score1) || isNaN(score2) || score1 < 0 || score2 < 0) {
+    showToast('Scoruri invalide!', 'error'); return;
+  }
+
+  myPredictions[key] = { score1, score2 };
+
+  if (btn) {
+    btn.disabled = true;
+    btn.textContent = 'Se salvează...';
+  }
+
+  try {
+    await gsCall('savePrediction', {
+      name: currentUser.name,
+      matchKey: key,
+      score1, score2
+    });
+    showToast('Predicție salvată! ⚽', 'success');
+  } catch(e) {
+    showToast('Salvat local (mod demo)', 'success');
+  }
+
+  if (btn) {
+    btn.disabled = false;
+    btn.classList.add('saved');
+    btn.textContent = '✓ Salvat';
+  }
+
+  // update points breakdown
+  const card = document.querySelector(`[data-key="${key}"]`);
+  if (card) {
+    // Sterge toate mesajele vechi de confirmare
+    card.querySelectorAll('.pred-confirm').forEach(el => el.remove());
+    const confirm = document.createElement('div');
+    confirm.className = 'pred-confirm';
+    confirm.style.cssText = 'margin-top:8px; font-size:11px; color:var(--success);';
+    confirm.textContent = `✓ Predicție înregistrată: ${score1}–${score2}`;
+    card.appendChild(confirm);
+    card.classList.add('has-prediction');
+  }
+}
+
+function filterPred(f, el) {
+  predFilter = f;
+  document.querySelectorAll('#predFilterBar .filter-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  renderPredictions();
+}
+
+// ============================================================
+// RENDER RESULTS
+// ============================================================
+function renderResults() {
+  let totalPts = 0, exact = 0, tend = 0, predictions = 0;
+
+  const played = allMatches.filter(m => m.score1 !== null && m.score2 !== null);
+  const container = document.getElementById('resultsContainer');
+
+  if (!allMatches.length) {
+    container.innerHTML = '<div class="card" style="text-align:center; padding:40px; color:var(--text-muted)">🏆 Se încarcă meciurile...</div>';
+    updateStatBoxes(0, 0, 0);
+    return;
+  }
+
+  let html = '';
+  // Afișează toate meciurile cu predicție, nu doar cele jucate
+  allMatches.forEach(m => {
+    const key = matchKey(m);
+    const pred = myPredictions[key];
+    if (!pred) return;
+
+    const hasResult = m.score1 !== null && m.score1 !== undefined &&
+                      m.score2 !== null && m.score2 !== undefined;
+
+    if (hasResult) {
+      predictions++;
+      const pts = calcPoints(pred.score1, pred.score2, m.score1, m.score2);
+      totalPts += pts;
+      if (pts === 4) exact++;
+      if (pts >= 2) tend++;
+    }
+
+    const f1 = getFlag(m.team1), f2 = getFlag(m.team2);
+    const dateStr = new Date(m.date).toLocaleDateString('ro-RO', { day:'numeric', month:'short' });
+    const pts = hasResult ? calcPoints(pred.score1, pred.score2, m.score1, m.score2) : null;
+
+    const scoreBlock = hasResult
+      ? `<div style="font-size:11px; color:var(--text-muted); margin-bottom:4px;">Rezultat real</div>
+         <div style="font-size:24px; font-weight:900;">${m.score1}–${m.score2}</div>
+         <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">Predicția ta</div>
+         <div style="font-size:18px; font-weight:700; color:${pts > 0 ? 'var(--itc-blue)' : '#991b1b'};">${pred.score1}–${pred.score2}</div>`
+      : `<div style="font-size:11px; color:var(--text-muted); margin-bottom:6px;">Predicția ta</div>
+         <div style="font-size:20px; font-weight:700; color:var(--itc-blue);">${pred.score1}–${pred.score2}</div>
+         <div style="font-size:10px; color:var(--text-muted); margin-top:4px;">⏳ Așteptăm rezultatul</div>`;
+
+    const ptsTag = hasResult
+      ? `<span class="pts-tag pts-${pts}">${pts} puncte</span>`
+      : `<span class="pts-tag" style="background:#f0f0f0; color:#999;">În așteptare</span>`;
+
+    html += `<div class="card" style="margin-bottom:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+        <span style="font-size:12px; color:var(--text-muted);">${dateStr} · ${m.group || m.round}</span>
+        ${ptsTag}
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:8px; align-items:center; text-align:center;">
+        <div>
+          <div style="font-size:22px;">${f1}</div>
+          <div style="font-size:13px; font-weight:700;">${m.team1}</div>
+        </div>
+        <div style="text-align:center;">${scoreBlock}</div>
+        <div>
+          <div style="font-size:22px;">${f2}</div>
+          <div style="font-size:13px; font-weight:700;">${m.team2}</div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  container.innerHTML = html || '<div class="card" style="text-align:center; padding:30px; color:var(--text-muted)">Nu ai predicții pentru meciurile jucate încă.</div>';
+
+  const myRank = leaderboardData.findIndex(u => u.name === currentUser.name) + 1;
+  updateStatBoxes(totalPts, exact, tend, myRank || '—');
+}
+
+function updateStatBoxes(total, exact, tend, pos) {
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statExact').textContent = exact;
+  document.getElementById('statTend').textContent = tend;
+  document.getElementById('statPos').textContent = pos !== undefined ? (pos === '—' ? '—' : '#' + pos) : '—';
+}
+
+// ============================================================
+// PRIZES
+// ============================================================
+const DEFAULT_PRIZES = [
+  { emoji: '🥇', title: 'Locul 1', prize: '100 RON + Diplomă de campion 🎖️', sub: 'Certificat personalizat ITC World Cup 2026', bg: 'linear-gradient(135deg,#fff9e6,#fff3cc)', border: 'var(--gold)', color: '#a07000' },
+  { emoji: '🥈', title: 'Locul 2', prize: 'Mystery Box Trendyol 🛍️', sub: 'Surpriză garantată!', bg: 'linear-gradient(135deg,#f5f5f5,#ececec)', border: 'var(--silver)', color: '#555' },
+  { emoji: '🥉', title: 'Locul 3', prize: 'Diplomă + ☕ o cafea', sub: 'Certificat personalizat ITC World Cup 2026', bg: 'linear-gradient(135deg,#fdf0e6,#fae3cc)', border: 'var(--bronze)', color: '#8b4500' },
+  { emoji: '🎯', title: 'Cel mai exact — "Sniper"', prize: 'Diplomă specială 🏹', sub: 'Cel cu cele mai multe scoruri exacte (4 puncte)', bg: 'linear-gradient(135deg,#eaf7ee,#d6f0de)', border: 'var(--itc-blue)', color: 'var(--itc-blue)' },
+];
+
+async function loadPrizes() {
+  let prizes = DEFAULT_PRIZES;
+  try {
+    const res = await gsCall('getPrizes');
+    if (res.prizes && res.prizes.length) prizes = res.prizes;
+  } catch(e) { /* folosim default */ }
+  renderPrizes(prizes);
+  return prizes;
+}
+
+function renderPrizes(prizes) {
+  const container = document.getElementById('prizesContainer');
+  container.innerHTML = prizes.map(p => `
+    <div style="display:flex; align-items:center; gap:14px; padding:16px; background:${p.bg}; border-radius:10px; border-left:4px solid ${p.border};">
+      <div style="font-size:36px;">${p.emoji}</div>
+      <div>
+        <div style="font-weight:800; font-size:16px; color:var(--itc-navy);">${p.title}</div>
+        <div style="font-size:14px; color:${p.color}; font-weight:600; margin-top:2px;">${p.prize}</div>
+        <div style="font-size:12px; color:var(--text-muted); margin-top:3px;">${p.sub}</div>
+      </div>
+    </div>`).join('');
+}
+
+async function adminSavePrizes() {
+  const prizes = DEFAULT_PRIZES.map((p, i) => ({
+    ...p,
+    prize: document.getElementById(`prize_main_${i}`).value,
+    sub: document.getElementById(`prize_sub_${i}`).value,
+  }));
+  try {
+    const res = await gsCall('savePrizes', { prizes });
+    if (res.success) {
+      showToast('Premii salvate! ✅', 'success');
+      renderPrizes(prizes);
+    } else {
+      showToast('Eroare la salvare', 'error');
+    }
+  } catch(e) {
+    showToast('Eroare conexiune', 'error');
+  }
+}
+
+function renderAdminPrizes() {
+  const container = document.getElementById('adminPrizesContainer');
+  container.innerHTML = DEFAULT_PRIZES.map((p, i) => `
+    <div style="padding:10px 0; border-bottom:1px solid #eee;">
+      <div style="font-size:13px; font-weight:700; margin-bottom:6px; color:var(--itc-navy);">${p.emoji} ${p.title}</div>
+      <input id="prize_main_${i}" type="text" value="${p.prize}"
+        style="width:100%; border:1.5px solid #ddd; border-radius:6px; padding:6px 10px; font-size:13px; margin-bottom:4px; font-family:inherit;">
+      <input id="prize_sub_${i}" type="text" value="${p.sub}"
+        style="width:100%; border:1.5px solid #ddd; border-radius:6px; padding:6px 10px; font-size:12px; color:#888; font-family:inherit;">
+    </div>`).join('');
+}
+
+// ============================================================
+function calcPoints(ps1, ps2, rs1, rs2) {
+  ps1 = parseInt(ps1); ps2 = parseInt(ps2);
+  rs1 = parseInt(rs1); rs2 = parseInt(rs2);
+  if (ps1 === rs1 && ps2 === rs2) return 4;
+  const pd = ps1 - ps2, rd = rs1 - rs2;
+  if (pd === rd) return 3;
+  const pt = Math.sign(pd), rt = Math.sign(rd);
+  if (pt === rt) return 2;
+  return 0;
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+  document.getElementById('page-' + name).classList.add('active');
+  if (btn) btn.classList.add('active');
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg, type = '') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + type;
+  setTimeout(() => { t.className = 'toast'; }, 3000);
+}
+
+// ============================================================
+// INIT
+// ============================================================
+window.addEventListener('load', () => {
+  checkAdminAccess();
+  const saved = localStorage.getItem('itcWC26_user');
+  if (saved) {
+    try {
+      currentUser = JSON.parse(saved);
+      document.getElementById('userPill').textContent = '👤 ' + currentUser.name.split(' ')[0];
+      document.getElementById('authOverlay').style.display = 'none';
+      loadAll();
+    } catch(e) { /* show auth */ }
+  }
+});
+</script>
+
+<!-- ADMIN PANEL -->
+<div class="overlay" id="adminPanel" style="display:none; z-index:2000;">
+  <div class="modal" style="max-width:520px; max-height:90vh; overflow-y:auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+      <div>
+        <div style="font-weight:800; font-size:18px; color:var(--itc-navy);">🔧 Admin Panel</div>
+        <div style="font-size:12px; color:var(--text-muted);">ITC World Cup 2026</div>
+      </div>
+      <button onclick="hideAdminPanel()" style="background:none; border:none; font-size:22px; cursor:pointer; color:var(--text-muted);">✕</button>
+    </div>
+
+    <!-- RESETARE PAROLA -->
+    <div style="background:#f8f9fc; border-radius:10px; padding:16px; margin-bottom:16px;">
+      <div class="card-title" style="margin-bottom:12px;">🔑 Resetare parolă</div>
+      <div class="field-label">Utilizator</div>
+      <input type="text" class="field-input" id="adminTargetName" placeholder="Numele exact al utilizatorului" style="margin-bottom:10px;">
+      <div class="field-label">Parolă nouă</div>
+      <input type="text" class="field-input" id="adminNewPass" placeholder="ex: itc1234" style="margin-bottom:12px;">
+      <button class="primary-btn" onclick="adminResetPassword()" style="background:var(--itc-blue);">Resetează parola</button>
+    </div>
+
+    <!-- EDITARE PREMII -->
+    <div style="background:#f8f9fc; border-radius:10px; padding:16px; margin-bottom:16px;">
+      <div class="card-title" style="margin-bottom:12px;">🎁 Editează premii</div>
+      <div id="adminPrizesContainer"></div>
+      <button class="primary-btn" onclick="adminSavePrizes()" style="background:var(--itc-blue); margin-top:12px;">💾 Salvează premiile</button>
+    </div>
+
+    <!-- UTILIZATORI -->
+    <div class="card-title" style="margin-bottom:10px;">👥 Utilizatori înregistrați</div>
+    <div id="adminUserList" style="max-height:200px; overflow-y:auto;">
+      <div style="color:#999; font-size:13px;">Se încarcă...</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
